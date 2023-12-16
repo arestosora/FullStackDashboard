@@ -1,0 +1,22 @@
+.create-button {
+    font-size: large;
+    width: 200px;
+    height: 50px;
+    left: 60px; 
+    bottom: 7.5%; 
+  }
+
+  .export-button {
+    font-size: large;
+    width: 200px;
+    height: 50px;
+    left: 70px; 
+    bottom: 7.5%;
+  }
+
+  .botones {
+    margin-top: 45px;
+    display: flex;
+    justify-content:flex-start;
+    top: 50px;
+  }

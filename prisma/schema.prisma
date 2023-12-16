@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admins {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  name     String
+  password String
+}
+
+model Logs {
+  id        Int      @id @default(autoincrement())
+  LoginLog  String
+  createdAt DateTime @default(now())
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  UserID    String   @unique
+  Pedidos   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pedidos {
+  id                Int       @id @default(autoincrement())
+  Referencia        String    @unique
+  Cuentas_Asignadas String    @default("N/A")
+  SN                String
+  UserID            String
+  Pedido            String
+  Estado            String    @default("Pendiente")
+  Comprobante       String
+  GuildID           String    @default("1133932007236309072")
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
+}
+
+model Config {
+  id              Int     @id @default(autoincrement())
+  GuildID         String  @unique
+  Pedidos_Enabled Boolean @default(true)
+}
+
+model Cuentas {
+  id            Int       @id @default(autoincrement())
+  Nickname      String
+  Username      String    @unique
+  Password      String
+  RPDisponibles Int       @default(2295)
+  Nota          String?
+  Estado        String    @default("Disponible")
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+
+model CuentasBanco {
+  id            Int       @id @default(autoincrement())
+  Nickname      String
+  Username      String    @unique
+  Password      String
+  RPDisponibles Int       @default(2295)
+  Nota          String?
+  Estado        String    @default("Disponible")
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+
+model CuentasCombo {
+  id            Int       @id @default(autoincrement())
+  Nickname      String
+  Username      String    @unique
+  Password      String
+  RPDisponibles Int       @default(2295)
+  Nota          String?
+  Estado        String    @default("Disponible")
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
+}
